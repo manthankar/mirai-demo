@@ -1,0 +1,10 @@
+.secrets/
+*.key
+.env
+*.log
+tunnel.log
+server.log
+screenshot.py
+screenshot.png
+.venv/
+__pycache__/

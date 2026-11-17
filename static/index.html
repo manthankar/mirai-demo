@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mirai by MindTech · AI Security Engineer (Demo)</title>
+<link rel="icon" href="logo_crop.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <img src="logo_crop.svg" alt="MIRAI" class="logo">
+    <div class="brandtext">
+      <div class="by">by <b>MindTech</b></div>
+      <div class="tag">Intelligent. Adaptive. Human-Governed.</div>
+    </div>
+  </div>
+  <div class="topmeta">
+    <span class="pill demo">DEMO · SAMPLE DATA</span>
+    <span class="pill src"><i class="dot wz"></i>Wazuh SIEM/XDR feed (simulated)</span>
+    <span class="pill src"><i class="dot ks"></i>Kaseya RMM context (simulated)</span>
+    <span class="pill quota" id="quota">AI calls left this hour: …</span>
+  </div>
+</header>
+
+<main class="grid">
+  <!-- LEFT: alerts + asset -->
+  <section class="panel left">
+    <div class="phead">
+      <h2>Alert Queue</h2>
+      <span class="live"><i></i>LIVE · sample feed</span>
+    </div>
+    <div class="hint">Click an alert to send it to the AI Security Engineer.</div>
+    <ul id="alerts" class="alerts"></ul>
+    <div class="asset" id="asset">
+      <div class="asset-h">Kaseya asset context <span class="muted">(sample)</span></div>
+      <div class="asset-b muted">Select an alert to view device owner, OS and patch status.</div>
+    </div>
+  </section>
+
+  <!-- MIDDLE: AI chat -->
+  <section class="panel mid">
+    <div class="phead">
+      <h2><span class="ai-badge">AI</span> Mirai AI Security Engineer</h2>
+      <span class="muted small">Triage · decide · ask a human before anything risky</span>
+    </div>
+    <div id="chat" class="chat">
+      <div class="msg ai intro">
+        <div class="bubble">
+          <b>Hi, I'm the Mirai AI Security Engineer.</b><br>
+          I triage Wazuh alerts using Kaseya asset context, map them to MITRE ATT&amp;CK, and recommend actions.
+          I handle low-risk, reversible steps on my own. Anything disruptive (isolating a host, disabling an account,
+          changing production) goes to a named NOC/SOC analyst for approval, and every step is logged on the right.
+          <div class="muted small" style="margin-top:6px">All alerts, hosts and users in this demo are sample data.</div>
+        </div>
+      </div>
+    </div>
+    <div class="chips" id="chips">
+      <button class="chip">Which alerts should we look at first?</button>
+      <button class="chip">Are A-1002 and A-1008 related?</button>
+      <button class="chip">What would you never do without approval?</button>
+    </div>
+    <form id="form" class="composer">
+      <input id="input" autocomplete="off" placeholder="Ask the AI Security Engineer anything about these alerts…" maxlength="1500">
+      <button type="submit" id="send">Send</button>
+    </form>
+  </section>
+
+  <!-- RIGHT: audit -->
+  <section class="panel right">
+    <div class="phead"><h2>Action &amp; Audit Log</h2></div>
+    <div class="stats">
+      <div><b id="s-tri">0</b><span>Triaged</span></div>
+      <div><b id="s-auto">0</b><span>Auto-handled</span></div>
+      <div><b id="s-pend">0</b><span>Awaiting human</span></div>
+      <div><b id="s-hum">0</b><span>Human decisions</span></div>
+    </div>
+    <ul id="audit" class="audit"></ul>
+  </section>
+</main>
+<footer class="foot">Mirai by MindTech · MindTech Services · mindtechservices.com · Prototype for demonstration only: all alerts, devices and users are fictitious sample data. Mirai is still being built.</footer>
+<script src="app.js"></script>
+</body>
+</html>

